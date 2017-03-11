@@ -1,0 +1,49 @@
+#exportPattern("^[[:alpha:]]+")
+import("ggplot2","RColorBrewer",
+       "classInt", "dplyr",
+       "sp","rgdal","maptools")
+#importFrom(dplyr, left_join)
+importFrom(gridExtra, arrangeGrob)
+importFrom("grDevices", "colorRampPalette")
+importFrom("utils", "download.file")
+importFrom("lattice", "trellis.par.set")
+importFrom("jsonlite", "toJSON")
+importFrom("stringr", "str_replace_all")
+importFrom("rgeos", "gSimplify")
+importFrom("ggmap", "theme_nothing")
+
+export(
+  choropleth,
+  classDots,
+  dots,
+  fast.choropleth,
+  gadm.loadCountries,
+  gadm.loadStripped,
+  gadm.saveStripped,
+  isopleth,
+  json.choropleth,
+  listNames,
+  plotmap,
+  propDots,
+  remove,
+  stripSP,
+  subset,
+  saveas,
+  saveAsStripped,
+  strippedExists,
+  grid.map,
+  vignette
+)
+S3method(choropleth, GADMWrapper)
+S3method(json.choropleth, GADMWrapper)
+S3method(classDots, GADMWrapper)
+S3method(dots, GADMWrapper)
+S3method(fast.choropleth, GADMWrapper)
+S3method(isopleth, GADMWrapper)
+S3method(listNames, GADMWrapper)
+S3method(plotmap, GADMWrapper)
+S3method(propDots, GADMWrapper)
+S3method(saveas, GADMWrapper)
+S3method(saveAsStripped, GADMWrapper)
+S3method(stripSP, GADMWrapper)
+S3method(vignette, GADMWrapper)
