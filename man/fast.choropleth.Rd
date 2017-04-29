@@ -65,9 +65,19 @@ Jean Pierre Decorps <jp.decorps@epiconcept.fr>
 \link{classIntervals}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+# MAP <- gadm.loadCountries("BEL", level = 3, simplify=0.01)
+# DAT = read.csv2("BE_clamydia_incidence.csv")
+
+# DAT <- rename(DAT, NAME_3 = district)
+
+# fast.choropleth(MAP, DAT,
+#                adm.join = "NAME_3",
+#                value = "rate03",
+#                steps = 4,
+#                breaks = "jenks",
+#                palette="Greens",
+#                legend = "Incidence",
+#                title="Chlamydia incidence by Belgian district (2003)")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
