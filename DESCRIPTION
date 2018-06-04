@@ -1,8 +1,8 @@
 Package: GADMTools
 Type: Package
 Title: Easy Use of 'GADM' Shapefiles
-Version: 2.1-1
-Date: 2017-04-26
+Version: 2.2-1
+Date: 2018-06-04
 Authors@R: c(person("Jean Pierre", "Decorps", role = c("aut", "cre"),
                      email = "jp.decorps@epiconcept.fr"),
               person("Morgane","Vallee", role = "ctb", 
@@ -11,14 +11,14 @@ Authors@R: c(person("Jean Pierre", "Decorps", role = c("aut", "cre"),
 Description: Manipulate, assemble, export <http://www.gadm.org> shapefiles. Create choropleth, heatmaps, dots plot, proportional dots and more.
 License: GPL-3
 Depends: sp, ggplot2, dplyr, classInt, rgdal
-Imports: RColorBrewer, maptools, scales, stringr, lattice, jsonlite,
-        gridExtra, rgeos, ggmap
+Imports: RColorBrewer, maptools, stringr, lattice, jsonlite, gridExtra,
+        rgeos, ggmap
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2017-04-29 16:02:18 UTC; kdo
+Packaged: 2018-06-04 21:58:31 UTC; kdo
 Author: Jean Pierre Decorps [aut, cre],
   Morgane Vallee [ctb]
 Maintainer: Jean Pierre Decorps <jp.decorps@epiconcept.fr>
 Repository: CRAN
-Date/Publication: 2017-04-29 17:43:56 UTC
+Date/Publication: 2018-06-04 22:15:59 UTC
