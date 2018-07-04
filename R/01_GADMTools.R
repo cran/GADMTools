@@ -127,11 +127,11 @@ listNames.GADMWrapper <- function(x, level=0) {
     cat(sprintf("Warning: max level=%d\n", x$level))
     level = x$level
   }
-  if (x$level == 0) {
-    name <-"NAME_ISO"
-  } else {
+  # if (x$level == 0) {
+  #   name <-"NAME_ISO"
+  # } else {
     name <- sprintf("NAME_%d", level)
-  }
+  # }
   unique(x$spdf@data[, name])
 }
 
@@ -442,11 +442,11 @@ isopleth.GADMWrapper <- function(x, data, palette=NULL, title="") {
 plotmap <- function(x, title="") UseMethod("plotmap", x)
 plotmap.GADMWrapper <- function(x, title="") {
   #  stop("input function ok")
-  if (x$level == 0) {
-    .name <-"ISO"
-  } else {
+  # if (x$level == 0) {
+  #   .name <-"ISO"
+  # } else {
     .name <- sprintf("NAME_%d", x$level)
-  }
+  # }
   
   .map <- x$spdf
   if (x$stripped == FALSE) {

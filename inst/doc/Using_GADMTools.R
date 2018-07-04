@@ -22,7 +22,7 @@
 #  
 #  # Assemble administrative boundaries (country level = 0)
 #  # -----------------------------------------------------------------
-#  map <- gadm.loadCountries(c("BEL","LUX","NLD"))
+#  map <- gadm.loadCountries(c("BEL","LUX","NLD"),  basefile = "./")
 #  plotmap(map, title="Bénélux")
 
 ## ----eval=FALSE----------------------------------------------------------
@@ -31,7 +31,7 @@
 #  library(GADMTools)
 #  library(sp)
 #  
-#  FR = gadm.loadCountries("FRA", level=2)
+#  FR = gadm.loadCountries("FRA", level=2, basefile = "./")
 #  listNames(FR, level=2)
 #  AV = subset(FR, regions=c("Allier", "Cantal",
 #              "Haute-Loire","Puy-de-Dôme"))
@@ -41,17 +41,17 @@
 #  library(GADMTools)
 #  library(sp)
 #  
-#  FR = gadm.loadCountries("FRA", level=1)
+#  FR = gadm.loadCountries("FRA", level=1, basefile = "./")
 #  plotmap(FR)
 #  listNames(FR, level=1)
-#  FR2 = remove(FR, level = 1, regions = c("Alsace", "Lorraine"))
+#  FR2 = remove(FR, level = 1, regions = c("Grand Est"))
 #  plotmap(FR2)
 
 ## ----eval=FALSE----------------------------------------------------------
 #  library(GADMTools)
 #  library(sp)
 #  
-#  map = gadm.loadCountries("FRA", level=1, simplify=0.01)
+#  map = gadm.loadCountries("FRA", level=1, simplify=0.01,  basefile = "./")
 #  map = subset(map, level=1, regions=c("Île-de-France","Haute-Normandie"))
 #  
 #  W <- read.csv2("wepi.csv", stringsAsFactors = FALSE)
@@ -88,7 +88,7 @@
 #  library(GADMTools)
 #  library(sp)
 #  
-#  France = gadm.loadCountries("FRA", level=1, simplify=0.01)
+#  France = gadm.loadCountries("FRA", level=1, simplify=0.01, basefile = "./")
 #  Region = subset(France, regions=c("Île-de-France","Haute-Normandie"), level=1)
 #  
 #  W <- read.csv2("wepi.csv")
@@ -125,7 +125,7 @@
 #  library(GADMTools)
 #  library(sp)
 #  
-#  France = gadm.loadCountries("FRA", level=1, simplify=0.01)
+#  France = gadm.loadCountries("FRA", level=1, simplify=0.01,   basefile = "./")
 #  Region = subset(France, regions=c("Île-de-France","Haute-Normandie"), level=1)
 #  
 #  W <- read.csv2("wepi.csv")
@@ -149,7 +149,7 @@
 #  library(GADMTools)
 #  library(sp)
 #  
-#  France = gadm.loadCountries("FRA", level=1, simplify=0.01)
+#  France = gadm.loadCountries("FRA", level=1, simplify=0.01,   basefile = "./")
 #  W <- read.csv2("wepi.csv")
 #  W$lieux_lat <- as.double(as.character(W$lieux_lat))
 #  W$lieux_long <- as.double(as.character(W$lieux_long))

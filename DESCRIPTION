@@ -1,8 +1,8 @@
 Package: GADMTools
 Type: Package
 Title: Easy Use of 'GADM' Shapefiles
-Version: 2.2-1
-Date: 2018-06-04
+Version: 2.2-2
+Date: 2018-08-04
 Authors@R: c(person("Jean Pierre", "Decorps", role = c("aut", "cre"),
                      email = "jp.decorps@epiconcept.fr"),
               person("Morgane","Vallee", role = "ctb", 
@@ -16,9 +16,9 @@ Imports: RColorBrewer, maptools, stringr, lattice, jsonlite, gridExtra,
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2018-06-04 21:58:31 UTC; kdo
+Packaged: 2018-07-04 12:13:34 UTC; kdo
 Author: Jean Pierre Decorps [aut, cre],
   Morgane Vallee [ctb]
 Maintainer: Jean Pierre Decorps <jp.decorps@epiconcept.fr>
 Repository: CRAN
-Date/Publication: 2018-06-04 22:15:59 UTC
+Date/Publication: 2018-07-04 12:40:02 UTC
