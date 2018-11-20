@@ -1,12 +1,17 @@
 # GADMTools
+
 GADMTools is an R package to manipulate shapefiles from GADM and to make geo-statistical representations easily.
 
-## Release 2.2-2
- - MAJOR BUGFIX -GGADMTools graphics did not work because of internals changes of .Rds file from GADM Database.
- 
-## Release 2.2-1
- - Compatibility with GADM 3.6 Database
+**GIT**: https://github.com/Epiconcept-Paris/GADMTools
 
-## Release 2.1-1
- - Add a vignette : Using_GADMTools.pdf
- - Add an example in man of many functions()
+## GADM
+
+**GADM** is a spatial database of the world's adminstrative boundaries for use in **GIS** and similar software. Administrative areas in this database are countries and lower level subdivisions such as provinces, departments, cantons, etc.
+Please, visit [gadm.org](https://gadm.org/) 
+
+**NB:** https://gadm.org is not the creator nor the maintener nor responsable of **GADMTools**
+
+## Easy use of GADM shapefiles
+
+With **GADMTools**, a wrapper for **GADM** shapefiles, you can easily manipulate, assemble, create subsets of these objects and plot statistics on the final maps.
+

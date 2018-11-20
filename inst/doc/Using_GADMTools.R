@@ -41,11 +41,42 @@
 #  library(GADMTools)
 #  library(sp)
 #  
+#  FR = gadm.loadCountries("FRA", level=2, basefile = "./")
+#  AV = subset(FR, regions=c("Allier", "Cantal",
+#              "Haute-Loire","Puy-de-Dôme"))
+#  AV <- gadm.union(AV)
+#  plotmap(AV)
+#  
+
+## ----eval=FALSE----------------------------------------------------------
+#  library(GADMTools)
+#  library(GADMTools)
+#  FJI = gadm.loadCountries("FJI", 1, basefile = "./")
+#  # Fig. 6
+#  plotmap(FJI, title = "Fidji Island with bad coordinates")
+
+## ----eval=FALSE----------------------------------------------------------
+#  FJI = gadm.longTo360(FJI)
+#  # Fig. 7
+#  plotmap(FJI, title = "Fidji Island with 0 - 360 coordinates")
+
+## ----eval=FALSE----------------------------------------------------------
+#  library(GADMTools)
+#  library(sp)
+#  
 #  FR = gadm.loadCountries("FRA", level=1, basefile = "./")
 #  plotmap(FR)
 #  listNames(FR, level=1)
 #  FR2 = remove(FR, level = 1, regions = c("Grand Est"))
 #  plotmap(FR2)
+
+## ----eval=FALSE----------------------------------------------------------
+#  library(GADMTools)
+#  library(rosm)
+#  FRA = gadm.loadCountries("FRA", 2, basefile = "./")
+#  BRE = GADMTools::subset(FRA, level=1, regions=c("Bretagne"))
+#  BRE2 <- gadm.getBackground(BRE, "BRE", "osm")
+#  plotmap(BRE2, title = "Map of Bretagne (FRANCE)")
 
 ## ----eval=FALSE----------------------------------------------------------
 #  library(GADMTools)
