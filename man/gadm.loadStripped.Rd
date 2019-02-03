@@ -72,5 +72,5 @@ See : \url{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3}
 # BE <- gadm.loadStripped('BEL', level=2)
 # plotmap(BE)
 }
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ ~documentation }
+\keyword{ ~utilities }% __ONLY ONE__ keyword per line

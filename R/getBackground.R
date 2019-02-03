@@ -1,4 +1,4 @@
-gadm.getBackground <- function(x, name, type="osm", clip=TRUE) {
+gadm.getBackground.GADMWrapper <- function(x, name, type="osm", clip=TRUE) {
   # Settings ----------------------------------------------------------------
   .shapeBoundaries <- gadm.union(x)
   .filename <- sprintf("%s.tif", name)

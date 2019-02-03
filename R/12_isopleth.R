@@ -34,6 +34,7 @@ isopleth.GADMWrapper <- function(x,
   
   long = lat = longitude = latitude = x = y = group = ..level.. = NULL
   
+  
   P <- ggplot()
   
   # Draw background if exists -----------------------------------------------
@@ -45,7 +46,7 @@ isopleth.GADMWrapper <- function(x,
   
   P <- P + geom_polygon(data=.map, aes(x=long, y=lat,  group=group),
                         fill=NA, color="black", size = 0.5) +
-    stat_density2d(aes(x = longitude, y = latitude, fill = ..level..), 
+  stat_density2d(aes(x = longitude, y = latitude, fill = ..level..), 
                    alpha=0.5, size = 10, bins = 10, data = .data, geom = "polygon")+
     scale_fill_gradientn(colours = .palette(100)) +
     labs(title = .titles,

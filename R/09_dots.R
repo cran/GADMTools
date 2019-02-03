@@ -1,15 +1,3 @@
-dots <- function(x, points, 
-                 color="red",
-                 size=8,
-                 value = NULL,
-                 breaks = NULL,
-                 steps = 5,
-                 palette = NULL,
-                 labels = NULL,
-                 strate = NULL ,
-                 title="",
-                 legend = NULL,
-                 note=NULL) UseMethod("dots", x)
 
 dots.GADMWrapper <- function(x, points, 
                              color="red",
@@ -20,11 +8,16 @@ dots.GADMWrapper <- function(x, points,
                              palette = NULL,
                              labels = NULL,
                              strate = NULL ,
-                             title="",
+                             title    = "",
+                             subtitle = "",
+                             caption  = "",
                              legend = NULL,
                              note="") {
   
   .x <- x
+  .subtitle <- subtitle
+  .caption <- caption
+  .titles <- title
   
   # Select a name to fortify it (for ggplot2) -------------------------------
   .name <- gadm.getLevelName(x)
@@ -87,7 +80,11 @@ dots.GADMWrapper <- function(x, points,
   # ----------------------------------------------------------
   .Theme <-   theme_bw() +
     theme(panel.border = element_blank()) +
-    theme(legend.key = element_blank()) 
+    theme(legend.key = element_blank()) +
+    theme(plot.title = element_text(hjust=0.5),
+          plot.subtitle = element_text(hjust=0.5),
+          plot.caption = element_text(hjust=0))
+    
     # theme(axis.text = element_blank()) +
     #    theme(axis.title = element_blank()) +
     #theme(axis.ticks = element_blank())
@@ -126,7 +123,10 @@ dots.GADMWrapper <- function(x, points,
                          limits=levels(.BRK),
                          labels=.labels,
                          guide = guide_legend(reverse = T)) +
-      labs(title = title) +
+      labs(title = .titles,
+           subtitle = .subtitle,
+           caption = .caption,
+           fill = "") + 
       .Theme + coord_quickmap();
     return(P)
   }
@@ -135,7 +135,11 @@ dots.GADMWrapper <- function(x, points,
     # No Stratification -------------------------------------------------------
     if (is.null(strate)) {
       P <- P + geom_point(data=points, aes(x=longitude, y=latitude), size=4, color=.pcolor, shape=16) +
-        labs(title = title) + .Theme + coord_quickmap();
+        labs(title = .titles,
+             subtitle = .subtitle,
+             caption = .caption,
+             fill = "") + 
+        .Theme + coord_quickmap();
       return(P)
     }
 
@@ -143,7 +147,11 @@ dots.GADMWrapper <- function(x, points,
     else {
       message("Using stratification\n")
       P <- P + geom_point(data=points, aes(x=longitude, y=latitude, shape=STRATE), size=4, color=.pcolor) +
-        labs(title = title) +
+        labs(title = .titles,
+             subtitle = .subtitle,
+             caption = .caption,
+             fill = "") + 
+        
         scale_shape_manual(values = c(15:18,65:75)) +
         .Theme + coord_quickmap();
       return(P)

@@ -1,5 +1,14 @@
-propDots <- function(x, data, value, breaks=NULL, range=NULL, labels=NULL, color="red", title="", note=NULL) UseMethod("propDots", x)
-propDots.GADMWrapper <- function(x, data, value, breaks=NULL, range=NULL, labels=NULL, color="red", title="", note=NULL) {
+propDots.GADMWrapper <- function(x, 
+                                 data, 
+                                 value, 
+                                 breaks=NULL, 
+                                 range=NULL, 
+                                 labels=NULL, 
+                                 color="red", 
+                                 title="",
+                                 subtitle = "",
+                                 caption = "", 
+                                 note=NULL) {
 
   .x <- x
   
@@ -39,7 +48,7 @@ propDots.GADMWrapper <- function(x, data, value, breaks=NULL, range=NULL, labels
   if (is.null(range)) {
     .range <- c(.inter[[2]], .inter[[3]])
   }
-  
+
   .labels = labels
   if (is.null(labels)) {
     .labels <- .breaks
@@ -68,7 +77,7 @@ propDots.GADMWrapper <- function(x, data, value, breaks=NULL, range=NULL, labels
                           size=eval(value)), 
                fill=.pcolor, color="#000000", shape=21, alpha=0.25) +
     xlab(paste("\n\n", note, sep="")) + ylab("") +
-    scale_size_area(max_size = 24, breaks=.breaks, limits = .range, labels=.labels) +
+    scale_size_area(max_size = 10, breaks=.breaks, limits = .range, labels=.labels) +
     labs(title = .title, fill = "") + 
     theme_bw() +
     theme(panel.border = element_blank(),

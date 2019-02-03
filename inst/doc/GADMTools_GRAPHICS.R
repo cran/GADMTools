@@ -2,88 +2,8 @@
 #  library(GADMTools)
 #  library(sp)
 #  
-#  # Loading country border (level=0 [default])
-#  # -----------------------------------------------------------------
-#  map <- gadm.loadCountries("FRA", basefile = "./")
-#  plotmap(map)
-
-## ----eval=FALSE----------------------------------------------------------
-#  library(GADMTools)
-#  library(sp)
-#  
-#  # Loading regions @ level = 2])
-#  # -----------------------------------------------------------------
-#  map <- gadm.loadCountries(c("FRA"), level=2, basefile = "./")
-#  plotmap(map)
-
-## ----eval=FALSE----------------------------------------------------------
-#  library(GADMTools)
-#  library(sp)
-#  
-#  # Assemble administrative boundaries (country level = 0)
-#  # -----------------------------------------------------------------
-#  map <- gadm.loadCountries(c("BEL","LUX","NLD"),  basefile = "./")
-#  plotmap(map, title="Bénélux")
-
-## ----eval=FALSE----------------------------------------------------------
-#  # Extract some regions of a map
-#  # -----------------------------------------------------------------
-#  library(GADMTools)
-#  library(sp)
-#  
-#  FR = gadm.loadCountries("FRA", level=2, basefile = "./")
-#  listNames(FR, level=2)
-#  AV = subset(FR, regions=c("Allier", "Cantal",
-#              "Haute-Loire","Puy-de-Dôme"))
-#  plotmap(AV)
-
-## ----eval=FALSE----------------------------------------------------------
-#  library(GADMTools)
-#  library(sp)
-#  
-#  FR = gadm.loadCountries("FRA", level=2, basefile = "./")
-#  AV = subset(FR, regions=c("Allier", "Cantal",
-#              "Haute-Loire","Puy-de-Dôme"))
-#  AV <- gadm.union(AV)
-#  plotmap(AV)
-#  
-
-## ----eval=FALSE----------------------------------------------------------
-#  library(GADMTools)
-#  library(GADMTools)
-#  FJI = gadm.loadCountries("FJI", 1, basefile = "./")
-#  # Fig. 6
-#  plotmap(FJI, title = "Fidji Island with bad coordinates")
-
-## ----eval=FALSE----------------------------------------------------------
-#  FJI = gadm.longTo360(FJI)
-#  # Fig. 7
-#  plotmap(FJI, title = "Fidji Island with 0 - 360 coordinates")
-
-## ----eval=FALSE----------------------------------------------------------
-#  library(GADMTools)
-#  library(sp)
-#  
-#  FR = gadm.loadCountries("FRA", level=1, basefile = "./")
-#  plotmap(FR)
-#  listNames(FR, level=1)
-#  FR2 = remove(FR, level = 1, regions = c("Grand Est"))
-#  plotmap(FR2)
-
-## ----eval=FALSE----------------------------------------------------------
-#  library(GADMTools)
-#  library(rosm)
-#  FRA = gadm.loadCountries("FRA", 2, basefile = "./")
-#  BRE = GADMTools::subset(FRA, level=1, regions=c("Bretagne"))
-#  BRE2 <- gadm.getBackground(BRE, "BRE", "osm")
-#  plotmap(BRE2, title = "Map of Bretagne (FRANCE)")
-
-## ----eval=FALSE----------------------------------------------------------
-#  library(GADMTools)
-#  library(sp)
-#  
-#  map = gadm.loadCountries("FRA", level=1, simplify=0.01,  basefile = "./")
-#  map = subset(map, level=1, regions=c("Île-de-France","Haute-Normandie"))
+#  map = gadm.sp.loadCountries("FRA", level=1, simplify=0.01,  basefile = "./")
+#  map = gadm.subset(map, level=1, regions=c("Île-de-France","Haute-Normandie"))
 #  
 #  W <- read.csv2("wepi.csv", stringsAsFactors = FALSE)
 #  W$lieux_lat <- as.double(W$lieux_lat)
@@ -119,14 +39,14 @@
 #  library(GADMTools)
 #  library(sp)
 #  
-#  France = gadm.loadCountries("FRA", level=1, simplify=0.01, basefile = "./")
-#  Region = subset(France, regions=c("Île-de-France","Haute-Normandie"), level=1)
+#  France = gadm.sf.loadCountries("FRA", level=1, basefile = "./")
+#  Region = gadm.subset(France, regions=c("Île-de-France","Haute-Normandie"), level=1)
 #  
 #  W <- read.csv2("wepi.csv")
 #  W$lieux_lat <- as.double(as.character(W$lieux_lat))
 #  W$lieux_long <- as.double(as.character(W$lieux_long))
 #  W <- rename(W, latitude = lieux_lat, longitude = lieux_long)
-#  
+#  W[13, "comptage"] <- 120
 #  
 #  # Test of propDots with default parameters
 #  # ------------------------------------------------------------------------------
@@ -137,16 +57,16 @@
 #            note="Test of propDots with default parameters")
 
 ## ----eval=FALSE----------------------------------------------------------
-#  # Test of propDots with default parameters
+#  # Test of propDots with defined breaks
 #  # ------------------------------------------------------------------------------
 #  propDots(Region, data = W, value = "comptage", color="orange",
 #           breaks=c(30, 40, 50, 70, 100),
 #           title="Cases 2015",
-#           note="Test of propDots with defined breaks")
+#           caption="Test of propDots with defined breaks")
 
 ## ----eval=FALSE----------------------------------------------------------
 #  propDots(Region, data = W, value = "comptage", color="green",
-#           range=c(30,70),
+#           range=c(1,100),
 #           breaks=c(30, 40, 50, 70, 100),
 #           title="Cases 2015",
 #           note="Test of propDots with forced range of breaks",
@@ -154,10 +74,9 @@
 
 ## ----eval=FALSE----------------------------------------------------------
 #  library(GADMTools)
-#  library(sp)
 #  
-#  France = gadm.loadCountries("FRA", level=1, simplify=0.01,   basefile = "./")
-#  Region = subset(France, regions=c("Île-de-France","Haute-Normandie"), level=1)
+#  France = gadm.sf.loadCountries("FRA", level=1, simplify=0.01,   basefile = "./")
+#  Region = gadm.subset(France, regions=c("Île-de-France","Normandie"), level=1)
 #  
 #  W <- read.csv2("wepi.csv")
 #  W$lieux_lat <- as.double(as.character(W$lieux_lat))
@@ -178,43 +97,63 @@
 
 ## ----eval=FALSE----------------------------------------------------------
 #  library(GADMTools)
-#  library(sp)
 #  
-#  France = gadm.loadCountries("FRA", level=1, simplify=0.01,   basefile = "./")
+#  France = gadm.sp.loadCountries("FRA", level=1, simplify=0.01,   basefile = "./")
 #  W <- read.csv2("wepi.csv")
 #  W$lieux_lat <- as.double(as.character(W$lieux_lat))
 #  W$lieux_long <- as.double(as.character(W$lieux_long))
 #  colnames(W)[1] <- "latitude"
 #  colnames(W)[2] <- "longitude"
-#  Region = subset(France, regions=c("Île-de-France","Haute-Normandie"), level=1)
+#  Region = gadm.subset(France, regions=c("Île-de-France","Normandie"), level=1)
 #  isopleth(Region, W)
+#  
+#  # With Simple features (SF)
+#  FRA_SF_1 = gadm.sf.loadCountries("FRA", level=1,   basefile = "./")
+#  Region = gadm.subset(FRA_SF_1, regions=c("Île-de-France","Normandie"), level=1)
+#  Region <- gadm.getBackground(Region, "FRA_IDF_NORM", type = "hotstyle")
+#  isopleth(Region, W, palette = "Reds",
+#           title = "Density of Cases",
+#           subtitle="Cases in Ile-de-France and Normandie",
+#           caption="Background from OpenStreetMap")
+#  
 
 ## ----eval=FALSE----------------------------------------------------------
 #  library(GADMTools)
-#  library(sp)
-#  library(dplyr)
 #  
-#  MAP <- gadm.loadCountries("BEL", level = 3, simplify=0.01)
-#  DAT = read.csv2("BE_clamydia_incidence.csv")
+#  library(readr)
+#  RPPS2 <- as.data.frame(read_csv2("RPPS2.csv"))
+#  RPPS2 <- RPPS2[1:96, ]
+#  RPPS2$ratio <- round(RPPS2$Specialistes / RPPS2$Généralistes, 3)
 #  
-#  # Rewriting District names
-#  # ------------------------
-#  DAT$district <- as.character(DAT$district)
-#  DAT[7,1] = "Brussel"
-#  DAT[20,1] <- "Liège"
-#  DAT[22,1] = "Marche-en-Famenne"
-#  DAT[27,1] = "Neufchâteau"
 #  
-#  # Here is the main trick !
-#  # -----------------------------------------------------
-#  DAT <- rename(DAT, NAME_3 = district)
-#  
-#  choropleth(MAP, DAT,
-#             adm.join = "NAME_3",
-#             value = "rate03",
+#  FRA_SF_2 <- gadm.sf.loadCountries("FRA",level = 2, basefile = "DATA/")
+#  FRA_SF_2 <- gadm.getBackground(FRA_SF_2, name = "FRA", clip = FALSE)
+#  choropleth(FRA_SF_2, data = RPPS2,
+#             value="Specialistes",
+#             adm.join = "Departement",
+#             steps = 6,
 #             breaks = "sd",
-#             palette="Oranges", legend = "Incidence",
-#             title="Chlamydia incidence by Belgian district for 2003)")
+#             palette = rev(RColorBrewer::brewer.pal(9, "Blues")),
+#             title = "Répartition des spécialistes en France",
+#             subtitle = "Data from RPPS",
+#             caption = "Background map from OpenStreetMap")
+#  
+#  
+#  
+#  FRA_SP_2 <- gadm.sp.loadCountries("FRA", level = 2, basefile = "DATA/")
+#  FRA_SP_2 <- gadm.getBackground(FRA_SP_2, name = "FRA", clip = FALSE)
+#  #RPPS3 <- rename(RPPS2, NAME_2 = Departement)
+#  choropleth(FRA_SP_2, data = RPPS2,
+#             steps = 6,
+#             value="Specialistes",
+#             adm.join = "NAME_2",
+#             breaks = "sd",
+#             palette = rev(RColorBrewer::brewer.pal(9, "Reds")),
+#             title = "Répartition des spécialistes en France",
+#             subtitle = "Data from RPPS",
+#             caption = "Background map from OpenStreetMap")
+#  
+#  
 
 ## ----eval=FALSE----------------------------------------------------------
 #  MAP <- gadm.loadCountries("BEL", level = 3, simplify=0.01)

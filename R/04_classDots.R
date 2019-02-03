@@ -1,31 +1,14 @@
-## ---------------------------------------------------------------------------
-## Method : classDots
-## Output : A map with dots wich are stratified
-## ---------------------------------------------------------------------------
-classDots <- function(x, 
-                      data,
-                      color="red",
-                      value = NULL,
-                      breaks = NULL,
-                      steps = 5,
-                      labels = NULL,
-                      opacity = 0.5,
-                      title="",
-                      note=NULL,
-                      legend = NULL) UseMethod("classDots", x)
-
-classDots.GADMWrapper <- function(
-  x,
-  data,
-  color="red",
-  value = NULL,
-  breaks = NULL,
-  steps = 5,
-  labels = NULL,
-  opacity = 0.5,
-  title="",
-  note=NULL,
-  legend = NULL) {
+classDots.GADMWrapper <- function( x,
+                                   data,
+                                   color="red",
+                                   value = NULL,
+                                   breaks = NULL,
+                                   steps = 5,
+                                   labels = NULL,
+                                   opacity = 0.5,
+                                   title="",
+                                   note=NULL,
+                                   legend = NULL) {
   
   loadNamespace("dplyr")
   
@@ -69,7 +52,7 @@ classDots.GADMWrapper <- function(
   
   .BRK <- computeBreaks(.points[, .value], breaks = breaks, steps = .steps, labels = labels)
   .BRK <- as.factor(.BRK)
-  .points <- .points %>% mutate(PSIZE = factor(as.integer(.BRK)))
+  .points <- .points %>% dplyr::mutate(PSIZE = factor(as.integer(.BRK)))
   # Labels
   # ---------------------------------------------------------
   if (is.null(labels)) {
