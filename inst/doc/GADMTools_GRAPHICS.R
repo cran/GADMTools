@@ -1,162 +1,98 @@
-## ----eval=FALSE----------------------------------------------------------
-#  library(GADMTools)
-#  library(sp)
-#  
-#  map = gadm.sp.loadCountries("FRA", level=1, simplify=0.01,  basefile = "./")
-#  map = gadm.subset(map, level=1, regions=c("Île-de-France","Haute-Normandie"))
-#  
-#  W <- read.csv2("wepi.csv", stringsAsFactors = FALSE)
-#  W$lieux_lat <- as.double(W$lieux_lat)
-#  W$lieux_long <- as.double(W$lieux_long)
-#  colnames(W)[1] <- "latitude"
-#  colnames(W)[2] <- "longitude"
-#  
-#  # Simple dots
-#  #--------------------------------------------------------------------
-#  dots(map, points = W, title="Cases 2015", note="Data from Wepi")
-#  
-#  
+## ----message=FALSE, warning=FALSE, fig.align='center', fig.height=7------
+library(GADMTools)
+data("Corsica")
 
-## ----eval=FALSE----------------------------------------------------------
-#  
-#  # Classified dots
-#  #--------------------------------------------------------------------
-#  dots(map, points = W,
-#       palette = "Reds",
-#       value="comptage",
-#       title="Classified Cases 2015", note="Data from Wepi")
-#  
+plotmap(Corsica) %>% gadm_showNorth("tl")
 
-## ----eval=FALSE----------------------------------------------------------
-#  # Typed points
-#  #--------------------------------------------------------------------
-#  dots(map, points = W,
-#       color = "#ee00ee",
-#       strate="type",
-#       title="Typed Cases 2015", note="Data from Wepi")
+## ----message=FALSE, warning=FALSE, fig.align='center', fig.height=7------
+library(GADMTools)
+data("Corsica")
 
-## ----eval=FALSE----------------------------------------------------------
-#  library(GADMTools)
-#  library(sp)
-#  
-#  France = gadm.sf.loadCountries("FRA", level=1, basefile = "./")
-#  Region = gadm.subset(France, regions=c("Île-de-France","Haute-Normandie"), level=1)
-#  
-#  W <- read.csv2("wepi.csv")
-#  W$lieux_lat <- as.double(as.character(W$lieux_lat))
-#  W$lieux_long <- as.double(as.character(W$lieux_long))
-#  W <- rename(W, latitude = lieux_lat, longitude = lieux_long)
-#  W[13, "comptage"] <- 120
-#  
-#  # Test of propDots with default parameters
-#  # ------------------------------------------------------------------------------
-#  propDots( Region,
-#            data = W,
-#            value = "comptage",
-#            color="blue",
-#            note="Test of propDots with default parameters")
+plotmap(Corsica) %>% gadm_showNorth("tl") %>% gadm_showScale("bl")
 
-## ----eval=FALSE----------------------------------------------------------
-#  # Test of propDots with defined breaks
-#  # ------------------------------------------------------------------------------
-#  propDots(Region, data = W, value = "comptage", color="orange",
-#           breaks=c(30, 40, 50, 70, 100),
-#           title="Cases 2015",
-#           caption="Test of propDots with defined breaks")
+## ------------------------------------------------------------------------
+# Preparing data.frame
+# --------------------
+data("Corsica")
 
-## ----eval=FALSE----------------------------------------------------------
-#  propDots(Region, data = W, value = "comptage", color="green",
-#           range=c(1,100),
-#           breaks=c(30, 40, 50, 70, 100),
-#           title="Cases 2015",
-#           note="Test of propDots with forced range of breaks",
-#           labels = c("< 30", "30 - 40", "40 - 50", "50 -70", "70 - 100"))
+Corse <- gadm_union(Corsica, 0)
+Cantons <- listNames(Corsica, 4)
+L <- length(Cantons)
+Pop <- floor(runif(L, min=15200, max=23500))
 
-## ----eval=FALSE----------------------------------------------------------
-#  library(GADMTools)
-#  
-#  France = gadm.sf.loadCountries("FRA", level=1, simplify=0.01,   basefile = "./")
-#  Region = gadm.subset(France, regions=c("Île-de-France","Normandie"), level=1)
-#  
-#  W <- read.csv2("wepi.csv")
-#  W$lieux_lat <- as.double(as.character(W$lieux_lat))
-#  W$lieux_long <- as.double(as.character(W$lieux_long))
-#  W <- rename(W, latitude = lieux_lat, longitude = lieux_long)
-#  
-#  classDots(Region,               # Polygons
-#            data = W,             # Dataset
-#            value = "comptage",   # Varname
-#            color="#ff9900",
-#            breaks=c(1, 10, 30, 50, 60, 100),
-#            legend = "Emergency",
-#            title = "Classes of points",
-#            opacity = 0.6,
-#            note = "Cases 2015"
-#  )
-#  
+longitude <- runif(6, min=8.74, max = 9.25)
+latitude  <- runif(6, min=41.7, max = 42.6)
+Cases <- floor(runif(6, 25, 80))
 
-## ----eval=FALSE----------------------------------------------------------
-#  library(GADMTools)
-#  
-#  France = gadm.sp.loadCountries("FRA", level=1, simplify=0.01,   basefile = "./")
-#  W <- read.csv2("wepi.csv")
-#  W$lieux_lat <- as.double(as.character(W$lieux_lat))
-#  W$lieux_long <- as.double(as.character(W$lieux_long))
-#  colnames(W)[1] <- "latitude"
-#  colnames(W)[2] <- "longitude"
-#  Region = gadm.subset(France, regions=c("Île-de-France","Normandie"), level=1)
-#  isopleth(Region, W)
-#  
-#  # With Simple features (SF)
-#  FRA_SF_1 = gadm.sf.loadCountries("FRA", level=1,   basefile = "./")
-#  Region = gadm.subset(FRA_SF_1, regions=c("Île-de-France","Normandie"), level=1)
-#  Region <- gadm.getBackground(Region, "FRA_IDF_NORM", type = "hotstyle")
-#  isopleth(Region, W, palette = "Reds",
-#           title = "Density of Cases",
-#           subtitle="Cases in Ile-de-France and Normandie",
-#           caption="Background from OpenStreetMap")
-#  
+Type <- rep(c("TYPE A", "TYPE B", "TYPE C"), 6, length.out = 6)
+DAT <- data.frame(longitude, latitude, Cases)
 
-## ----eval=FALSE----------------------------------------------------------
-#  library(GADMTools)
-#  
-#  library(readr)
-#  RPPS2 <- as.data.frame(read_csv2("RPPS2.csv"))
-#  RPPS2 <- RPPS2[1:96, ]
-#  RPPS2$ratio <- round(RPPS2$Specialistes / RPPS2$Généralistes, 3)
-#  
-#  
-#  FRA_SF_2 <- gadm.sf.loadCountries("FRA",level = 2, basefile = "DATA/")
-#  FRA_SF_2 <- gadm.getBackground(FRA_SF_2, name = "FRA", clip = FALSE)
-#  choropleth(FRA_SF_2, data = RPPS2,
-#             value="Specialistes",
-#             adm.join = "Departement",
-#             steps = 6,
-#             breaks = "sd",
-#             palette = rev(RColorBrewer::brewer.pal(9, "Blues")),
-#             title = "Répartition des spécialistes en France",
-#             subtitle = "Data from RPPS",
-#             caption = "Background map from OpenStreetMap")
-#  
-#  
-#  
-#  FRA_SP_2 <- gadm.sp.loadCountries("FRA", level = 2, basefile = "DATA/")
-#  FRA_SP_2 <- gadm.getBackground(FRA_SP_2, name = "FRA", clip = FALSE)
-#  #RPPS3 <- rename(RPPS2, NAME_2 = Departement)
-#  choropleth(FRA_SP_2, data = RPPS2,
-#             steps = 6,
-#             value="Specialistes",
-#             adm.join = "NAME_2",
-#             breaks = "sd",
-#             palette = rev(RColorBrewer::brewer.pal(9, "Reds")),
-#             title = "Répartition des spécialistes en France",
-#             subtitle = "Data from RPPS",
-#             caption = "Background map from OpenStreetMap")
-#  
-#  
 
-## ----eval=FALSE----------------------------------------------------------
-#  MAP <- gadm.loadCountries("BEL", level = 3, simplify=0.01)
+## ----fig.align='center', fig.height=7, fig.cap="Simple dots", fig.pos="h", out.extra=""----
+# Simple dots
+#--------------------------------------------------------------------
+dots(Corsica, DAT, color="red", size = 3)
+
+
+## ----fig.align='center', fig.height=7, fig.cap="Classified dots", fig.pos="h", out.extra=""----
+
+# Classified dots
+#--------------------------------------------------------------------
+dots(Corse, points = DAT, 
+     palette = "Reds",
+     value="Cases")
+
+## ----fig.align='center', fig.height=7, fig.cap="Typed dots", fig.pos="h", out.extra=""----
+# Typed points
+#--------------------------------------------------------------------
+DAT2 <- data.frame(longitude, latitude, Type)
+dots(Corse, points = DAT2, 
+     color = "#ee00ee",
+     strate="Type")
+
+## ----fig.align='center', fig.height=7, fig.cap="propDots", fig.pos="h", out.extra=""----
+# Test of propDots with default parameters
+# ------------------------------------------------------------------------------
+propDots(Corse, 
+         data = DAT, 
+         value="Cases",
+         color = "blue")
+
+## ----fig.align='center', fig.height=7, fig.cap="propDots with provided breaks", fig.pos="h", out.extra=""----
+# Test of propDots with defined breaks
+# ------------------------------------------------------------------------------
+propDots(Corse, 
+         data = DAT,
+         value="Cases", breaks=c(30, 40, 50, 70, 100),
+         color = "blue")
+
+
+## ----fig.align='center', fig.height=7, fig.cap="propDots", fig.pos="h", out.extra=""----
+# Test of propDots with forced range of breaks
+# ------------------------------------------------------------------------------
+propDots(Corse, data = DAT, value="Cases",
+         breaks=c(0, 25, 50, 75, 100), 
+         range = c(25, 100))
+
+
+## ----fig.align='center', fig.height=7, fig.cap="classDots", fig.pos="h", out.extra=""----
+library(GADMTools)
+
+classDots(Corse, DAT, color="blue", value = "Cases", steps = 4)
+
+
+## ----fig.align='center', fig.height=7, fig.cap="Isopleth", fig.pos="h", out.extra=""----
+library(GADMTools)
+
+isopleth(Corse, data = DAT, palette = "Blues")
+
+## ----fig.align='center', fig.height=7, fig.cap="Choropleth", fig.pos="h", out.extra=""----
+DAT <- data.frame(Cantons, Pop)
+choropleth(Corsica, data = DAT, value = "Pop", adm.join = "Cantons",
+           breaks = "sd", palette = "Greens")
+
+## ----eval=FALSE,  fig.pos="h", out.extra=""------------------------------
+#  MAP <- gadm_sp_loadCountries("BEL", level = 3, simplify=0.01)
 #  DAT = read.csv2("BE_clamydia_incidence.csv")
 #  
 #  # Rewriting District names
