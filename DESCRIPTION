@@ -1,27 +1,28 @@
 Package: GADMTools
 Type: Package
 Title: Easy Use of 'GADM' Maps
-Version: 3.6-1
-Date: 2019-03-16
+Version: 3.7-1
+Date: 2019-06-25
 Authors@R: c(person("Jean Pierre", "Decorps", role = c("aut", "cre"),
                      email = "jp.decorps@epiconcept.fr"),
               person("Morgane","Vallee", role = "ctb", 
                 email = "m.vallee@epiconcept.fr")
               )
-Description: Manipulate, assemble, export <http://www.gadm.org> maps. Create 'choropleth', 'isopleth', dots plot, proportional dots and more.
+Description: Manipulate, assemble, export <http://www.gadm.org> maps. Create 'choropleth', 'isopleth', dots plot, proportional dots,
+   dot-density and more.
 Depends: R (>= 3.5.0), sp, tidyverse, classInt, sf, rgdal
 Imports: methods, RColorBrewer, maptools, stringr, raster, rosm,
         lattice, jsonlite, gridExtra, rgeos, ggmap, ggspatial, ggplot2,
         dplyr, prettymapr
-Suggests: knitr, rmarkdown, kableExtra, mapproj, testthat
+Suggests: knitr, rmarkdown, kableExtra, mapproj, tidyr, testthat
 License: GPL-3
 URL: https://github.com/Epiconcept-Paris/GADMTools
 Encoding: UTF-8
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2019-03-17 23:22:01 UTC; JDS
+Packaged: 2019-06-26 00:28:03 UTC; JDS
 Author: Jean Pierre Decorps [aut, cre],
   Morgane Vallee [ctb]
 Maintainer: Jean Pierre Decorps <jp.decorps@epiconcept.fr>
 Repository: CRAN
-Date/Publication: 2019-03-17 23:53:23 UTC
+Date/Publication: 2019-06-26 08:10:10 UTC

@@ -81,13 +81,33 @@ library(GADMTools)
 classDots(Corse, DAT, color="blue", value = "Cases", steps = 4)
 
 
+## ----message=FALSE, fig.align='center', fig.height=5.3, fig.cap="Dot-Density", fig.pos="h", out.extra=""----
+library(GADMTools)
+data("Corsica")
+
+# Creates test data.frame -------------------------------------------------
+# --------------------------------------------------------------------------
+VAR_1 <- as.integer(runif(n = 43, min = 800, max = 15800))
+VAR_2 <- as.integer(runif(n = 43, min = 1000, max = 15800))
+VAR_3 <- as.integer(runif(n = 43, min = 1500, max = 15800))
+Cantons <- listNames(Corsica, 4)
+DF <- data.frame(Cantons, VAR_1, VAR_2, VAR_3, stringsAsFactors = FALSE)
+
+dotDensity(Corsica,
+                DF, adm.join="Cantons", dot.size = 0.5, cases.by.dots = 1000,
+                values = c("VAR_1", "VAR_2", "VAR_3"),
+                labels = c("H1N1", "H1N2", "H2N2"),
+                palette = c("#ffff00", "#ffaa00", "#FF3200"))
+
+
+
 ## ----fig.align='center', fig.height=7, fig.cap="Isopleth", fig.pos="h", out.extra=""----
 library(GADMTools)
 
 isopleth(Corse, data = DAT, palette = "Blues")
 
-## ----fig.align='center', fig.height=7, fig.cap="Choropleth", fig.pos="h", out.extra=""----
-DAT <- data.frame(Cantons, Pop)
+## ----message=FALSE, fig.align='center', fig.height=7, fig.cap="Choropleth", fig.pos="h", out.extra=""----
+DAT <- data.frame(Cantons, Pop, stringsAsFactors = FALSE)
 choropleth(Corsica, data = DAT, value = "Pop", adm.join = "Cantons",
            breaks = "sd", palette = "Greens")
 
