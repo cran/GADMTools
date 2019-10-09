@@ -1,8 +1,8 @@
 Package: GADMTools
 Type: Package
 Title: Easy Use of 'GADM' Maps
-Version: 3.7-1
-Date: 2019-06-25
+Version: 3.7-2
+Date: 2019-10-08
 Authors@R: c(person("Jean Pierre", "Decorps", role = c("aut", "cre"),
                      email = "jp.decorps@epiconcept.fr"),
               person("Morgane","Vallee", role = "ctb", 
@@ -20,9 +20,9 @@ URL: https://github.com/Epiconcept-Paris/GADMTools
 Encoding: UTF-8
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2019-06-26 00:28:03 UTC; JDS
+Packaged: 2019-10-09 13:16:14 UTC; kdo
 Author: Jean Pierre Decorps [aut, cre],
   Morgane Vallee [ctb]
 Maintainer: Jean Pierre Decorps <jp.decorps@epiconcept.fr>
 Repository: CRAN
-Date/Publication: 2019-06-26 08:10:10 UTC
+Date/Publication: 2019-10-09 13:40:06 UTC

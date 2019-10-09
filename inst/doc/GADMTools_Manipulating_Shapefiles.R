@@ -1,3 +1,16 @@
+## ----eval=FALSE----------------------------------------------------------
+#  map <- gadm_sf_import_shp(dir="./", name = "india", level = 2,
+#                            del = c("DCODE", "NAME3", "SDCODE"),
+#                            renamed = c('ISO' = 'COUNTRY',
+#                                        'NAME_0' = 'COUNTRY_LO',
+#                                        'NAME_1' = 'NAME1',
+#                                        'NAME_2' = 'NAME2'),
+#                            keepall = FALSE
+#                            )
+#  map$sf$ISO <- "IND"
+#  map$sf$NAME_0 <- "India"
+#  
+
 ## ----echo=FALSE, message=FALSE-------------------------------------------
 library(GADMTools)
 data("Corsica")
