@@ -1,6 +1,6 @@
 ---
 title: "GADMTools - Graphics"
-author: "jp.decorps@epiconcept.fr - Epiconcept"
+author: "jean.pierre.decorps@gmail.com"
 date: "`r Sys.Date()`"
 output: rmarkdown::pdf_document
 vignette: >
@@ -14,37 +14,6 @@ vignette: >
 
 --------------------------------------------------------------------------------------------
 
-Epiconcept is made up of a team of doctors, epidemiologists, data scientists and digital specialists.
-For more than 20 years, Epiconcept has been contributing to the improvement of public health programs by providing software, epidemiological studies, counseling, evaluation and training to better prevent, detect and treat people.
-
-Epiconcept delivers software and services in the following areas :
-
-  - Software for managing public health programs,
-  - Secure cloud solutions for health data collection, reporting and processing,
-  - The implementation of research projects on measuring the effectiveness and impact of vaccines,
-  - Services in the field of epidemiology (protocols, analyzes, training, etc.),
-  - Expertise in data analysis,
-  - Counseling, coaching and assistance to project owners for public health programs,
-  - Training (short introductory modules, training through long-term practice).
-
-To achieve such goals Epiconcept :
-
-  - Recognized research organization,
-  - Certified datacenter for hosting personal health data,
-  - Training organisation.
-
-Epiconcept relies on  :
-
-  - Its expertise in epidemiology
-  - Its IT expertise,
-  - Ethical values rooted in practice (responsibility and quality of services, data security and confidentiality, scientific independence, etc.),
-  - Capabilities to answer and anticipate tomorrow’s challenges (Research - evaluation, e-health, Big Data, IoT, etc.),
-  - A desire to build long-term relationships with its clients and partners.
-
-Its current customers and partners include some of the greatest names in the world such as : Santé Publique France (and many public health organizations around the world), WHO, eCDC, AFD, MSF, World Bank, etc.
-
---------------------------------------------------------------------------------------------
-
 
 \newpage
 
@@ -55,7 +24,7 @@ Its current customers and partners include some of the greatest names in the wor
 Function             | Description 
 :------------------- | :------------------------------------------
 choropleth           | Draws a choropleth on selected regions
-classDots            | Plots dots on a map with values between different fixed classestries
+classDots            | Plots dots on a map with values between different fixed classes
 dots                 | Plots dots on a map
 dotDensity           | Draws a dot-density map
 isopleth             | Draws an isopleth on selected regions

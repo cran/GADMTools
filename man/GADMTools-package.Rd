@@ -21,15 +21,15 @@ With \bold{GADMTools}, a wrapper for \bold{GADM} shapefiles, you can easily mani
 \tabular{ll}{
 Package: \tab GADMTools\cr
 Type: \tab Package\cr
-Version: \tab 3.7-1\cr
-Date: \tab 2019-10-08\cr
+Version: \tab 3.8-1\cr
+Date: \tab 2020-03-03\cr
 License: \tab GPL-3\cr
 }
 
 }
 \author{
-Jean Pierre Decorps <jp.decorps@epiconcept.fr>
+Jean Pierre Decorps <jean.pierre.decorps@gmail.com>
 
 Maintainer: 
-Jean Pierre Decorps <jp.decorps@epiconcept.fr>
+Jean Pierre Decorps <jean.pierre.decorps@gmail.com>
 }

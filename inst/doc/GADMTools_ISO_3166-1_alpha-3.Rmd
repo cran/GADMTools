@@ -1,6 +1,6 @@
 ---
 title: "GADMTools - ISO 3166-1 alpha-3"
-author: "Jean Pierre Decorps - Epiconcept"
+author: "jean.pierre.decorps@gmail.com"
 date: "`r Sys.Date()`"
 output: rmarkdown::pdf_document
 vignette: >
