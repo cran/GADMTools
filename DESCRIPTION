@@ -1,8 +1,8 @@
 Package: GADMTools
 Type: Package
 Title: Easy Use of 'GADM' Maps
-Version: 3.8-1
-Date: 2020-03-03
+Version: 3.8-2
+Date: 2021-04-21
 Authors@R: c(person("Jean Pierre", "Decorps", role = c("aut", "cre"),
                      email = "jean.pierre.decorps@gmail.com")
             )
@@ -18,8 +18,8 @@ URL: https://github.com/IamKDO/GADMTools
 Encoding: UTF-8
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2020-03-05 11:42:47 UTC; kdo
+Packaged: 2021-04-23 13:46:04 UTC; kdo
 Author: Jean Pierre Decorps [aut, cre]
 Maintainer: Jean Pierre Decorps <jean.pierre.decorps@gmail.com>
 Repository: CRAN
-Date/Publication: 2020-03-05 12:30:08 UTC
+Date/Publication: 2021-04-23 14:10:03 UTC

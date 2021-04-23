@@ -1,16 +1,16 @@
-## ----message=FALSE, warning=FALSE, fig.align='center', fig.height=7------
+## ----message=FALSE, warning=FALSE, fig.align='center', fig.height=7-----------
 library(GADMTools)
 data("Corsica")
 
 plotmap(Corsica) %>% gadm_showNorth("tl")
 
-## ----message=FALSE, warning=FALSE, fig.align='center', fig.height=7------
+## ----message=FALSE, warning=FALSE, fig.align='center', fig.height=7-----------
 library(GADMTools)
 data("Corsica")
 
 plotmap(Corsica) %>% gadm_showNorth("tl") %>% gadm_showScale("bl")
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # Preparing data.frame
 # --------------------
 data("Corsica")
@@ -111,7 +111,7 @@ DAT <- data.frame(Cantons, Pop, stringsAsFactors = FALSE)
 choropleth(Corsica, data = DAT, value = "Pop", adm.join = "Cantons",
            breaks = "sd", palette = "Greens")
 
-## ----eval=FALSE,  fig.pos="h", out.extra=""------------------------------
+## ----eval=FALSE,  fig.pos="h", out.extra=""-----------------------------------
 #  MAP <- gadm_sp_loadCountries("BEL", level = 3, simplify=0.01)
 #  DAT = read.csv2("BE_clamydia_incidence.csv")
 #  
